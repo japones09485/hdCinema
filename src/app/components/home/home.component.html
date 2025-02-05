@@ -1,0 +1,191 @@
+<div class="bg-white min-h-screen font-sans">
+  <!-- Navbar con fondo oscuro y detalles amarillos -->
+  <nav class="bg-gray-900 shadow-lg">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex justify-between">
+        <div class="flex space-x-7">
+          <a href="#" class="flex items-center py-4 px-2">
+            <span class="font-semibold text-white text-lg">Devi</span>
+          </a>
+        </div>
+        <!-- Menú para móviles -->
+        <div class="md:hidden flex items-center">
+          <button id="menu-toggle" class="text-white focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+        <!-- Menú para escritorio -->
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="#about" class="py-4 px-2 text-white font-semibold hover:text-primary transition duration-300">ABOUT</a>
+          <a href="#services" class="py-4 px-2 text-white font-semibold hover:text-primary transition duration-300">SERVICES</a>
+          <a href="#portfolio" class="py-4 px-2 text-white font-semibold hover:text-primary transition duration-300">PORTFOLIO</a>
+          <a href="#team" class="py-4 px-2 text-white font-semibold hover:text-primary transition duration-300">TEAM</a>
+          <a href="#contact" class="py-4 px-2 text-white font-semibold hover:text-primary transition duration-300">CONTACT</a>
+        </div>
+      </div>
+    </div>
+    <!-- Menú móvil desplegable -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+      <a href="#about" class="block py-2 px-4 text-white hover:bg-gray-700">ABOUT</a>
+      <a href="#services" class="block py-2 px-4 text-white hover:bg-gray-700">SERVICES</a>
+      <a href="#portfolio" class="block py-2 px-4 text-white hover:bg-gray-700">PORTFOLIO</a>
+      <a href="#team" class="block py-2 px-4 text-white hover:bg-gray-700">TEAM</a>
+      <a href="#contact" class="block py-2 px-4 text-white hover:bg-gray-700">CONTACT</a>
+    </div>
+  </nav>
+
+  <!-- Home Section con imagen de fondo y detalles amarillos -->
+  <div class="relative flex items-center justify-center h-screen bg-cover bg-center" style="background-image: url('assets/img/hero-bg.jpg');">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="relative z-10 text-center px-4">
+      <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold text-white mb-6">PLAN. LAUNCH. GROW.</h1>
+      <p class="text-lg sm:text-2xl md:text-3xl text-white mb-8">We are a team of talented designers making websites with Bootstrap</p>
+      <button class="mt-8 bg-primary text-white px-8 py-3 rounded-full text-lg hover:bg-yellow-600 transition duration-300 shadow-lg">GET STARTED</button>
+    </div>
+  </div>
+
+  <!-- About Section con detalles amarillos -->
+  <section id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">
+        Voluptatem dignissimos provident laboris nisi ut aliquip ex ea commodo
+      </h2>
+      <p class="text-base sm:text-lg text-gray-600 mb-8 text-center">
+        Ut fugiat ut suru quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placest debitis quia recusandae odit et consequatur voluptatem. Dipinissimos pariatur consecetur fugiat voluptas ea.
+      </p>
+      <div class="text-center">
+        <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition duration-300 shadow-lg">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section con detalles amarillos -->
+  <section id="services" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">SERVICES</h2>
+      <h3 class="text-2xl font-semibold text-center text-gray-700 mb-8">FEATURED SERVICES</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-primary">
+          <h4 class="text-xl font-bold text-gray-800 mb-4">Nesciunt Mete</h4>
+          <p class="text-gray-600">Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-primary">
+          <h4 class="text-xl font-bold text-gray-800 mb-4">Eosle Commodi</h4>
+          <p class="text-gray-600">Ut autem aut autem non a. Sint sint sit facilis. Uit exceptur voluptatem nisi sed. Quidem fuga nem uscio sint. Libero corrupti neque eum hic consequatur. Minus es aut. Vel qui id voluptas non ut nesciunt dolorem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section con detalles amarillos -->
+  <section id="portfolio" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">PORTFOLIO</h2>
+      <h3 class="text-2xl font-semibold text-center text-gray-700 mb-8">CHECK OUR PORTFOLIO</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-primary">
+          <h4 class="text-xl font-bold text-gray-800 mb-4">Made Paying</h4>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-primary">
+          <h4 class="text-xl font-bold text-gray-800 mb-4">LITTLE</h4>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-primary">
+          <h4 class="text-xl font-bold text-gray-800 mb-4">BLOOM</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section con detalles amarillos -->
+  <section id="team" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">TEAM</h2>
+      <h3 class="text-2xl font-semibold text-center text-gray-700 mb-8">CHECK OUR TEAM</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-primary text-center">
+          <h4 class="text-xl font-bold text-gray-800 mb-4">Walter White</h4>
+          <p class="text-gray-600">Chief Executive Officer</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-primary text-center">
+          <h4 class="text-xl font-bold text-gray-800 mb-4">Sarah Jhonson</h4>
+          <p class="text-gray-600">Product Manager</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-primary text-center">
+          <h4 class="text-xl font-bold text-gray-800 mb-4">William Anderson</h4>
+          <p class="text-gray-600">Product Manager</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section con detalles amarillos -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">CONTACT</h2>
+      <h3 class="text-2xl font-semibold text-center text-gray-700 mb-8">NECESSITATIBUS EIUS CONSEQUATUR</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h4 class="text-xl font-bold text-gray-800 mb-4">Address</h4>
+          <p class="text-gray-600">A108 Adam Street, New York, NY 853022</p>
+          <h4 class="text-xl font-bold text-gray-800 mt-6 mb-4">Call Us</h4>
+          <p class="text-gray-600">+1 5599 55488 55</p>
+          <h4 class="text-xl font-bold text-gray-800 mt-6 mb-4">Email Us</h4>
+          <p class="text-gray-600">infoexample.com</p>
+        </div>
+        <div>
+          <form class="bg-gray-100 p-6 rounded-lg shadow-lg">
+            <input type="text" placeholder="Your Name" class="w-full p-2 mb-4 rounded border border-gray-300">
+            <input type="email" placeholder="Your Email" class="w-full p-2 mb-4 rounded border border-gray-300">
+            <textarea placeholder="Your Message" class="w-full p-2 mb-4 rounded border border-gray-300"></textarea>
+            <button type="submit" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition duration-300 shadow-lg">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer con detalles amarillos -->
+  <footer class="bg-gray-800 text-white py-10">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <h4 class="text-xl font-bold mb-4">Devil</h4>
+          <p class="text-gray-400">A508 Adam Street<br>New York, NY 829032<br>Phone: +1 5599 55488 55<br>Email: infoexample.com</p>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4">Useful Links</h4>
+          <ul class="text-gray-400">
+            <li><a href="#" class="hover:text-primary">Home</a></li>
+            <li><a href="#" class="hover:text-primary">About us</a></li>
+            <li><a href="#" class="hover:text-primary">Services</a></li>
+            <li><a href="#" class="hover:text-primary">Terms of service</a></li>
+            <li><a href="#" class="hover:text-primary">Privacy policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4">Our Services</h4>
+          <ul class="text-gray-400">
+            <li><a href="#" class="hover:text-primary">Web Design</a></li>
+            <li><a href="#" class="hover:text-primary">Web Development</a></li>
+            <li><a href="#" class="hover:text-primary">Product Management</a></li>
+            <li><a href="#" class="hover:text-primary">Marketing</a></li>
+            <li><a href="#" class="hover:text-primary">Graphic Design</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4">Our Newsletter</h4>
+          <p class="text-gray-400 mb-4">Subscribe to our newsletter and receive the latest news about our products and services!</p>
+          <form class="flex">
+            <input type="email" placeholder="Your Email" class="w-full p-2 rounded-l border border-gray-300">
+            <button type="submit" class="bg-primary text-white px-4 rounded-r hover:bg-yellow-600 transition duration-300">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <p class="text-gray-400">© Copyright Devil. All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
+</div>
