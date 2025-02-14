@@ -1,0 +1,115 @@
+<div class="overflow-x-auto w-full">
+    <!-- Título -->
+    <h2 class="text-2xl font-bold text-gray-900 bg-gray py-4 text-center uppercase shadow-md rounded-t-lg">
+      {{ isCreating || isEditing ? 'Formulario de Servicio' : 'Listado de Servicios' }}
+    </h2>
+  
+    <!-- Contenedor dinámico -->
+    <div *ngIf="!isCreating && !isEditing">
+      <table class="min-w-full border-collapse border border-gray-300 font-[Poppins] shadow-lg rounded-lg overflow-hidden bg-gray-100">
+        <thead class="bg-gray-900 text-gray-700 uppercase text-sm">
+          <tr>
+            <th class="py-3 px-5 border text-center">
+                <button 
+                class="bg-yellow-500 hover:bg-gray-600 text-black font-bold py-2 px-4 rounded flex items-center justify-center gap-2"
+                (click)="createServices()" title="Nuevo servicio">
+                ➕ Nuevo Servicio
+                <span class="sr-only">Nueva Servicio</span>
+              </button>  
+
+            </th>
+            <th class="py-3 px-5 border text-white">Nombre</th>
+            <th class="py-3 px-5 border text-white">Descripción</th>
+            <th class="py-3 px-5 border text-white">Imagen 1</th>
+            <th class="py-3 px-5 border text-white">Imagen 2</th>
+            <th class="py-3 px-5 border text-white">Estado</th>
+            <th class="py-3 px-5 border text-white">Fecha Creación</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let service of services" class="bg-gray-100 text-gray-800 hover:bg-gray-200 transition duration-300">
+            <td class="py-3 px-5 border font-semibold text-center">
+
+   
+
+              <!-- Botón Editar -->
+              <button 
+                class="bg-yellow-500 hover:bg-gray-600 text-white font-bold p-2 rounded-md mx-1" 
+                (click)="editService(service)"
+                title="Editar">
+                ✏️
+              </button>
+              <!-- Botón Eliminar -->
+              <button 
+                class="bg-gray-600 hover:bg-yellow-500 text-white font-bold p-2 rounded-md mx-1" 
+                (click)="deleteService(service.id)"
+                title="Eliminar">
+                🗑️
+              </button>
+            </td>
+            <td class="py-3 px-5 border text-center">{{ service.name }}</td>
+            <td class="py-3 px-5 border hidden md:table-cell text-center">{{ service.descripcion }}</td>
+            <td class="py-3 px-5 border text-center">
+              <img *ngIf="service.img1" [src]="service.img1" alt="Imagen 1" class="w-12 h-12 object-cover rounded-md mx-auto shadow-md">
+              <img *ngIf="!service.img1" src="../../../../assets/img/nofoto.png" alt="Imagen 1" class="w-12 h-12 object-cover rounded-md mx-auto shadow-md">
+            </td>
+            <td class="py-3 px-5 border text-center">
+              <img *ngIf="service.img2" [src]="service.img2" alt="Imagen 2" class="w-12 h-12 object-cover rounded-md mx-auto shadow-md">
+              <img *ngIf="!service.img2" src="../../../../assets/img/nofoto.png" alt="Imagen 1" class="w-12 h-12 object-cover rounded-md mx-auto shadow-md">
+            </td>
+            <td class="py-3 px-5 border text-center">
+              <span [ngClass]="service.state === 1 ? 'text-green-600 font-bold' : 'text-red-600 font-bold'">
+                {{ service.state === 1 ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+            <td class="py-3 px-5 border text-center hidden lg:table-cell text-center">{{ service.createdAt | date:'mediumDate' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Formulario de Servicio (Nueva / Edición) -->
+    <div *ngIf="isCreating || isEditing" class="bg-gray-100 p-6 rounded-lg shadow-lg max-w-lg mx-auto mt-20">
+      <form [formGroup]="ServicesForm" (ngSubmit)="saveService()" enctype="multipart/form-data">
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Nombre</label>
+          <input type="text" formControlName="name" class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-yellow-400">
+        </div>
+  
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Descripción</label>
+          <textarea formControlName="descripcion" class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-yellow-400"></textarea>
+        </div>
+  
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Imagen 1</label>
+          <input type="file" (change)="uploadImage($event, 'img1')" class="w-full px-3 py-2 border rounded-lg shadow-sm">
+        </div>
+  
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Imagen 2</label>
+          <input type="file" (change)="uploadImage($event, 'img2')" class="w-full px-3 py-2 border rounded-lg shadow-sm">
+        </div>
+  
+        <div class="mb-4">
+          <label class="block text-gray-700 font-bold mb-2">Estado</label>
+          <select formControlName="state" class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-yellow-400">
+            <option [value]="1">Activo</option>
+            <option [value]="0">Inactivo</option>
+          </select>
+        </div>
+  
+        <!-- Botones -->
+        <div class="flex justify-between">
+          <button type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg" (click)="cancel()">
+            Cancelar
+          </button>
+          <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-lg">
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

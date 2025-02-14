@@ -1,0 +1,41 @@
+<div class="flex h-screen bg-gray-100">
+  
+  <!-- Menú lateral -->
+  <div class="w-64 bg-gray-900 text-white flex flex-col">
+    
+    <div class="p-6 flex items-center justify-center space-x-2 bg-white">
+      <img src="../../../../assets/img/logoHD.png" alt="Logo" class="w-40 h-10">
+
+    </div>
+    
+
+    <nav class="flex-1">
+      <ul class="mt-4 space-y-2">
+        <li><a href="#" (click)="selectComponent('dashboard', $event)" class="block px-4 py-2 hover:bg-gray-700 text-center">Inicio</a></li>
+        <li><a href="#" (click)="selectComponent('categorias', $event)" class="block px-4 py-2 hover:bg-gray-700 text-center">Categorías</a></li>
+        <li><a href="#" (click)="selectComponent('productos', $event)" class="block px-4 py-2 hover:bg-gray-700 text-center">Productos</a></li>
+        <li><a href="#" (click)="selectComponent('ofertas', $event)" class="block px-4 py-2 hover:bg-gray-700 text-center">Ofertas</a></li>
+        <li><a href="#" (click)="selectComponent('servicios', $event)" class="block px-4 py-2 hover:bg-gray-700 text-center">Servicios</a></li>
+        <li><a href="#" (click)="selectComponent('galeria', $event)" class="block px-4 py-2 hover:bg-gray-700 text-center">Galería</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="flex-1 p-6 bg-white shadow-lg rounded-lg">
+     
+    <app-categories *ngIf="selectedComponent === 'categorias'"></app-categories>
+    <app-products *ngIf="selectedComponent === 'productos'"></app-products>
+    <app-offerts *ngIf="selectedComponent === 'ofertas'"></app-offerts>
+    <app-services *ngIf="selectedComponent === 'servicios'"></app-services>
+    <app-galery *ngIf="selectedComponent === 'galeria'"></app-galery>
+
+    <!-- Componente de Dashboard por defecto -->
+    <div *ngIf="selectedComponent === 'dashboard'" class="text-center p-6">
+      <h2 class="text-xl font-semibold text-gray-700">Bienvenido al Panel</h2>
+      <p class="text-gray-500">Selecciona una opción del menú para empezar.</p>
+    </div>
+
+  </div>
+</div>
