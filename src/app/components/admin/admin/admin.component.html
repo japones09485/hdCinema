@@ -1,0 +1,28 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+      <!-- Logo -->
+      <div class="flex justify-center mb-4">
+        <img src="../../../../assets/img/logoHD.png" alt="Logo" class="w-24">
+      </div>
+  
+      <!-- Formulario Reactivo -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
+        <div>
+          <label for="usuario" class="block text-sm font-medium text-gray-700">Usuario</label>
+          <input type="text" id="usuario" formControlName="usuario" class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <p *ngIf="loginForm.get('usuario')?.invalid && loginForm.get('usuario')?.touched" class="text-red-500 text-sm">El usuario es obligatorio</p>
+        </div>
+  
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+          <input type="password" id="password" formControlName="password" class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500 text-sm">La contraseña es obligatoria</p>
+        </div>
+  
+        <button type="submit" class="w-full bg-yellow-500 text-white p-2 rounded-md hover:bg-gray-600" [disabled]="loginForm.invalid">
+          Ingresar
+        </button>
+      </form>
+    </div>
+  </div>
+  

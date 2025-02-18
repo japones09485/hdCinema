@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ApiService } from "../../../services/api.service";
+
 
 @Component({
   selector: 'app-categories',
@@ -9,38 +11,32 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
 })
-export class CategoriesComponent {
+export class CategoriesComponent implements OnInit{
+
+  categories:any;
   isCreating: boolean = false;
   isEditing: boolean = false;
   selectedCategory: any = null;
   showForm: boolean = false;
+  categoryForm !: FormGroup;
+ 
 
-  categories = [
-    {
-      id: 1,
-      name: "Cámaras DSLina hernandezR",
-      descripcion: "Cámaras profesionales de alta resolución",
-      img1: "",
-      img2: "",
-      state: 1,
-      createdAt: new Date("2024-02-13T10:00:00"),
-      updatedAt: new Date("2024-02-13T12:00:00")
-    },
-    {
-      id: 2,
-      name: "Lentes",
-      descripcion: "Lentes de diferentes focales para cámaras",
-      img1: "",
-      img2: "",
-      state: 1,
-      createdAt: new Date("2024-02-13T11:00:00"),
-      updatedAt: new Date("2024-02-13T13:00:00")
-    }
-  ];
+  
 
-  categoryForm: FormGroup;
+  constructor(private fb: FormBuilder,
+                     private apiRest:ApiService
+  ) {}
 
-  constructor(private fb: FormBuilder) {
+  ngOnInit(): void {
+    
+    this.apiRest.get_categories().subscribe((res:any)=>{
+      this.categories=res;
+    });
+
+  }
+
+  InitForm(){
+    
     this.categoryForm = this.fb.group({
       name: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -48,8 +44,8 @@ export class CategoriesComponent {
       img2: [''],
       state: [1, Validators.required]
     });
+  
   }
-
   /** Mostrar el formulario para crear una nueva categoría */
   createCategory() {
     this.isCreating = true;
@@ -111,9 +107,7 @@ export class CategoriesComponent {
   /** Confirmar y eliminar categoría */
   deleteCategory(categoryId: number) {
     const confirmDelete = confirm('¿Está seguro de eliminar la categoría?');
-    if (confirmDelete) {
-      this.categories = this.categories.filter(category => category.id !== categoryId);
-    }
+    
   }
 
   /** Cancelar y volver a la lista */
